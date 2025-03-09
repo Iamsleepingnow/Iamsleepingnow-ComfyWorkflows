@@ -1,0 +1,2413 @@
+{
+  "last_node_id": 85,
+  "last_link_id": 110,
+  "nodes": [
+    {
+      "id": 32,
+      "type": "MarkdownNote",
+      "pos": [
+        100,
+        1690
+      ],
+      "size": [
+        1030,
+        580
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## LoRAs\n- https://civitai.com/models/333358/ponydiffusion-quality-slider\n- https://civitai.com/models/845407/hand-fixer-or-concepttool-lora-xl\n- https://civitai.com/models/1027187/techwear-inspired-aesthetic\n- https://civitai.com/models/264290?modelVersionId=372898\n- https://civitai.com/models/454079?modelVersionId=505533\n- https://civitai.com/models/633524/background-detail-enhancer\n- https://civitai.com/models/438059/dynamic-poses-slider-ponyxl\n- https://civitai.com/models/748085/stickman-stick-figure\n\n## Embeddings\n- https://civitai.com/models/831971/deep-negative-pony\n- https://civitai.com/models/300217/boringsdxl-enhance-images-stylistically-and-topically-for-pony-diffusion-v6\n\n## Plugins\n- ComfyUI-Easy-Use\n- Advanced CLIP Text Encode\n- Skimmed_CFG\n- rgthree-comfy\n- comfyui-If\n- ComfyUI-Logic\n- ComfyUI Impact Pack\n- PowerNoiseSuite\n- PPF_Noise_ComfyUI"
+      ],
+      "color": "#c09430",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 57,
+      "type": "easy pipeIn",
+      "pos": [
+        1170,
+        750
+      ],
+      "size": [
+        140,
+        186
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE_LINE",
+          "link": null,
+          "shape": 7,
+          "label": "节点束"
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 74,
+          "shape": 7,
+          "label": "模型"
+        },
+        {
+          "name": "pos",
+          "type": "CONDITIONING",
+          "link": 75,
+          "shape": 7
+        },
+        {
+          "name": "neg",
+          "type": "CONDITIONING",
+          "link": 76,
+          "shape": 7
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 77,
+          "shape": 7,
+          "label": "Latent"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 78,
+          "shape": 7
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 79,
+          "shape": 7
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7,
+          "label": "图像"
+        },
+        {
+          "name": "xyPlot",
+          "type": "XYPLOT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE_LINE",
+          "links": [
+            80
+          ],
+          "slot_index": 0,
+          "label": "节点束"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy pipeIn",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "color": "#006691"
+    },
+    {
+      "id": 58,
+      "type": "easy preSampling",
+      "pos": [
+        1100,
+        970
+      ],
+      "size": [
+        210,
+        262
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE_LINE",
+          "link": 80,
+          "label": "节点束"
+        },
+        {
+          "name": "image_to_latent",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7,
+          "label": "图像（可选）"
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": null,
+          "shape": 7,
+          "label": "Latent（可选）"
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 81,
+          "widget": {
+            "name": "seed"
+          },
+          "label": "随机种"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE_LINE",
+          "links": [
+            92
+          ],
+          "slot_index": 0,
+          "label": "节点束"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy preSampling",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        34,
+        11,
+        "dpmpp_2m_sde",
+        "karras",
+        1,
+        949833308287246,
+        "randomize"
+      ],
+      "color": "#006691"
+    },
+    {
+      "id": 59,
+      "type": "Reroute",
+      "pos": [
+        680,
+        860
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            83
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 60,
+      "type": "Reroute",
+      "pos": [
+        1070,
+        860
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            75
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 61,
+      "type": "Skimmed CFG - linear interpolation dual scales",
+      "pos": [
+        680,
+        770
+      ],
+      "size": [
+        410,
+        82
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 84,
+          "label": "model"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            74
+          ],
+          "slot_index": 0,
+          "label": "MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Skimmed CFG - linear interpolation dual scales"
+      },
+      "widgets_values": [
+        2.2,
+        7
+      ],
+      "color": "#008181",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 62,
+      "type": "LF_Notify",
+      "pos": [
+        1470,
+        1440
+      ],
+      "size": [
+        220,
+        192
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any",
+          "type": "*",
+          "link": 85,
+          "label": "any"
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 86,
+          "shape": 7,
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "any",
+          "type": "*",
+          "links": null,
+          "label": "any"
+        },
+        {
+          "name": "any_list",
+          "type": "*",
+          "links": null,
+          "shape": 6,
+          "label": "any_list"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LF_Notify"
+      },
+      "widgets_values": [
+        "ComfyUI",
+        "图像生成成功！",
+        "Focus tab",
+        false,
+        "图像"
+      ],
+      "color": "#af3535",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 63,
+      "type": "Seed (rgthree)",
+      "pos": [
+        410,
+        600
+      ],
+      "size": [
+        210,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SEED",
+          "type": "INT",
+          "links": [
+            103
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "随机种",
+          "dir": 4
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed (rgthree)"
+      },
+      "widgets_values": [
+        412312291408485,
+        null,
+        null,
+        null
+      ],
+      "color": "#c09430",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 64,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -250,
+        970
+      ],
+      "size": [
+        320,
+        122
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            87
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "模型"
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3,
+          "label": "CLIP"
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [],
+          "slot_index": 2,
+          "shape": 3,
+          "label": "VAE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        "Pony\\SDXL_PonyRealism_V22MainVAE.safetensors",
+        null
+      ],
+      "color": "#008181",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 65,
+      "type": "Float-🔬",
+      "pos": [
+        -250,
+        710
+      ],
+      "size": [
+        320,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            89
+          ],
+          "slot_index": 0,
+          "label": "FLOAT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Float-🔬"
+      },
+      "widgets_values": [
+        0.2
+      ],
+      "color": "#af3535",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 66,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -250,
+        810
+      ],
+      "size": [
+        320,
+        122
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            88
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "模型"
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            109
+          ],
+          "slot_index": 1,
+          "shape": 3,
+          "label": "CLIP"
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            104
+          ],
+          "slot_index": 2,
+          "shape": 3,
+          "label": "VAE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        "Pony\\SDXL_PonyDiffusionV6XL_v6StartWithThisOne.safetensors",
+        null
+      ],
+      "color": "#008181",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 67,
+      "type": "ModelMergeSimple",
+      "pos": [
+        100,
+        790
+      ],
+      "size": [
+        210,
+        74
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model1",
+          "type": "MODEL",
+          "link": 87,
+          "label": "模型1"
+        },
+        {
+          "name": "model2",
+          "type": "MODEL",
+          "link": 88,
+          "label": "模型2"
+        },
+        {
+          "name": "ratio",
+          "type": "FLOAT",
+          "link": 89,
+          "widget": {
+            "name": "ratio"
+          },
+          "label": "比率"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            106
+          ],
+          "slot_index": 0,
+          "label": "模型"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelMergeSimple"
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#008181",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 68,
+      "type": "workflow>Pony CLIP batch encoder",
+      "pos": [
+        100,
+        930
+      ],
+      "size": [
+        560,
+        470
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "link": 90,
+          "label": "CLIP"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "条件",
+          "type": "CONDITIONING",
+          "links": [
+            82
+          ],
+          "slot_index": 0,
+          "label": "条件"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow>Pony CLIP batch encoder"
+      },
+      "widgets_values": [
+        "(score_9, score_8_up, score_8:1.1), (rating_safe:0.65)",
+        "(1 Stickman:1.1), male, round Head, futuristic partial light armor, high tech, techwear, solo, looking at viewer, (orange skin:1.2), (light yellow skin:0.6), cyborg joints, cable, (containers:1.1), scaffold, concrete building, outdoors, barrels, index finger raised, (beautiful eyes, yellow eyes, artificial eyes:1.1), stare_down, (reflective:1.1), (shiny:1.3), shiny_skin, (cute:0.2), (chibi:0.25), proud",
+        "chrome torn combat uniform, latex_gloves, (loose bondage clothes:1.2), colorful robotic boots, (walking dynamic forward-leaning pose:1), the color palette contrasts white, black, and orange, (aged_down:0.4), (skinny:0.6), asphalt, dawn, otherworldly, sky, (rainy, downpour:1.2), heavy fog, steam, (dust:1.05), ash, fire, (particles:1.2), atmospheric perspective, evil_smile, (from_above:1.25), (from_side:1.1), full_body focus, (close-up:1.05)",
+        "(stick figure, round Head:1.2), \n(sc3n3ry:0.5), \n(handfixer:0.15), ",
+        ", ",
+        "true",
+        "none",
+        "comfy++"
+      ],
+      "color": "#346434",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 69,
+      "type": "workflow>Pony CLIP batch encoder",
+      "pos": [
+        680,
+        930
+      ],
+      "size": [
+        410,
+        470
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "link": 91,
+          "label": "CLIP"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "条件",
+          "type": "CONDITIONING",
+          "links": [
+            76
+          ],
+          "slot_index": 0,
+          "label": "条件"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow>Pony CLIP batch encoder"
+      },
+      "widgets_values": [
+        "(score_7, score_6_up, score_6, score_5_up, score_4_up:1.0), ",
+        "anthro, vintage, text, monochrome, watermark, low-quality, signature, moiré pattern, downsampling, aliasing, distorted, blurry, glossy, blur, jpeg artifacts, compression artifacts, (poorly drawn:1.1), (low-resolution, bads, distortion:1.1)",
+        "twisted, excessive, exaggerated pose, exaggerated limbs, grainy, symmetrical, duplicate, error, pattern, (beginner:1.1), pixelated, fake, hyper, glitch, overexposed, high-contrast, bad-contrast",
+        "(deep_negative_pony:1), (boring_sdxl_v1:1), \n(embedding:Pony_deep_negative_pony:1), (embedding:Pony_boring_sdxl_v1:1), ",
+        ", ",
+        "true",
+        "none",
+        "comfy++"
+      ],
+      "color": "#af3535",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 70,
+      "type": "Seed (rgthree)",
+      "pos": [
+        1100,
+        1260
+      ],
+      "size": [
+        210,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SEED",
+          "type": "INT",
+          "links": [
+            81
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "随机种",
+          "dir": 4
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Seed (rgthree)"
+      },
+      "widgets_values": [
+        516658330232389,
+        null,
+        null,
+        null
+      ],
+      "color": "#c09430",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 71,
+      "type": "easy kSampler",
+      "pos": [
+        1330,
+        750
+      ],
+      "size": [
+        360,
+        640
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE_LINE",
+          "link": 92,
+          "label": "节点束"
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": null,
+          "shape": 7,
+          "label": "模型（可选）"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE_LINE",
+          "links": [
+            85
+          ],
+          "slot_index": 0,
+          "label": "节点束"
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            86
+          ],
+          "slot_index": 1,
+          "label": "图像"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy kSampler",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        "Preview",
+        0,
+        "Pony"
+      ],
+      "color": "#006691"
+    },
+    {
+      "id": 72,
+      "type": "easy loraStack",
+      "pos": [
+        100,
+        1440
+      ],
+      "size": [
+        300,
+        202
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optional_lora_stack",
+          "type": "LORA_STACK",
+          "link": null,
+          "shape": 7,
+          "label": "LoRA堆（可选）"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "links": [
+            110
+          ],
+          "slot_index": 0,
+          "label": "LoRA堆"
+        }
+      ],
+      "title": "简易Lora堆 质量LoRA",
+      "properties": {
+        "Node name for S&R": "easy loraStack",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        true,
+        "simple",
+        2,
+        ".Pony\\Pony_QualityV4.0.safetensors",
+        0.25,
+        1,
+        1,
+        ".Pony\\HandFixer_pdxl_Incrs_v1.safetensors",
+        0.15,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ],
+      "color": "#1f1f48",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 73,
+      "type": "easy loraStack",
+      "pos": [
+        790,
+        1440
+      ],
+      "size": [
+        330,
+        202
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optional_lora_stack",
+          "type": "LORA_STACK",
+          "link": 93,
+          "shape": 7,
+          "label": "LoRA堆（可选）"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "links": [
+            94
+          ],
+          "slot_index": 0,
+          "label": "LoRA堆"
+        }
+      ],
+      "title": "简易Lora堆 场景LoRA",
+      "properties": {
+        "Node name for S&R": "easy loraStack",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        true,
+        "simple",
+        2,
+        ".Pony\\Backgrounds\\BG_sc3n3ryXLP.safetensors",
+        0.3,
+        1,
+        1,
+        ".Pony\\zy_Detailed_Backgrounds_v1.safetensors",
+        0.4,
+        1,
+        1,
+        "None",
+        1.25,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ],
+      "color": "#1f1f48",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 74,
+      "type": "easy loraStack",
+      "pos": [
+        1130,
+        1440
+      ],
+      "size": [
+        310,
+        202
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optional_lora_stack",
+          "type": "LORA_STACK",
+          "link": 94,
+          "shape": 7,
+          "label": "LoRA堆（可选）"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "links": [
+            105
+          ],
+          "slot_index": 0,
+          "label": "LoRA堆"
+        }
+      ],
+      "title": "简易Lora堆 角色与动作LoRA",
+      "properties": {
+        "Node name for S&R": "easy loraStack",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        true,
+        "simple",
+        2,
+        ".Pony\\Pose\\DynamicPose_alpha1.0_rank4_noxattn_100steps.safetensors",
+        2.2,
+        1,
+        1,
+        ".Pony\\Stickman_stick_figure.safetensors",
+        0.9,
+        1,
+        1,
+        ".Pony\\Pony_QualityV4.0.safetensors",
+        1.25,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ],
+      "color": "#1f1f48",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 75,
+      "type": "EmptyLatentImage",
+      "pos": [
+        230,
+        460
+      ],
+      "size": [
+        210,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            95,
+            99
+          ],
+          "slot_index": 0,
+          "label": "Latent"
+        }
+      ],
+      "title": "空Latent 832 x 1216",
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        832,
+        1216,
+        1
+      ],
+      "color": "#422342",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 76,
+      "type": "Reroute",
+      "pos": [
+        470,
+        400
+      ],
+      "size": [
+        90.4000015258789,
+        26
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            98
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 77,
+      "type": "Blend Latents (PPF Noise)",
+      "pos": [
+        880,
+        460
+      ],
+      "size": [
+        210,
+        266
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "latent_a",
+          "type": "LATENT",
+          "link": 96,
+          "label": "Latent_A"
+        },
+        {
+          "name": "latent_b",
+          "type": "LATENT",
+          "link": 97,
+          "label": "Latent_B"
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7,
+          "label": "遮罩"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latents",
+          "type": "LATENT",
+          "links": [
+            77
+          ],
+          "slot_index": 0,
+          "label": "Latent"
+        },
+        {
+          "name": "previews",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 1,
+          "label": "预览"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Blend Latents (PPF Noise)"
+      },
+      "widgets_values": [
+        "lerp",
+        0.3,
+        1,
+        "false",
+        "false",
+        0,
+        1,
+        "false"
+      ]
+    },
+    {
+      "id": 78,
+      "type": "Reroute",
+      "pos": [
+        770,
+        400
+      ],
+      "size": [
+        90.4000015258789,
+        26
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            96
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 79,
+      "type": "ImpactLatentInfo",
+      "pos": [
+        470,
+        460
+      ],
+      "size": [
+        140,
+        86
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "LATENT",
+          "link": 99,
+          "label": "Latent"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "batch",
+          "type": "INT",
+          "links": null,
+          "label": "批次大小"
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            102
+          ],
+          "slot_index": 1,
+          "label": "高度"
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            101
+          ],
+          "slot_index": 2,
+          "label": "宽度"
+        },
+        {
+          "name": "channel",
+          "type": "INT",
+          "links": null,
+          "label": "通道"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImpactLatentInfo"
+      }
+    },
+    {
+      "id": 80,
+      "type": "Power-Law Noise (PPF Noise)",
+      "pos": [
+        640,
+        460
+      ],
+      "size": [
+        210,
+        262
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 100,
+          "shape": 7,
+          "label": "VAE(可选)"
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 101,
+          "widget": {
+            "name": "width"
+          },
+          "label": "宽度"
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 102,
+          "widget": {
+            "name": "height"
+          },
+          "label": "高度"
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 103,
+          "widget": {
+            "name": "seed"
+          },
+          "label": "随机种"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latents",
+          "type": "LATENT",
+          "links": [
+            97
+          ],
+          "slot_index": 0,
+          "label": "Latent"
+        },
+        {
+          "name": "previews",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 1,
+          "label": "预览"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Power-Law Noise (PPF Noise)"
+      },
+      "widgets_values": [
+        1,
+        512,
+        512,
+        "nearest-exact",
+        "brownian_fractal",
+        1,
+        0.5,
+        1,
+        153,
+        "increment",
+        "cpu"
+      ]
+    },
+    {
+      "id": 81,
+      "type": "Reroute",
+      "pos": [
+        540,
+        850
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 104
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            78,
+            100
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 82,
+      "type": "easy loraStackApply",
+      "pos": [
+        410,
+        770
+      ],
+      "size": [
+        210,
+        66
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": 105,
+          "label": "LoRA堆可选"
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 106,
+          "label": "模型"
+        },
+        {
+          "name": "optional_clip",
+          "type": "CLIP",
+          "link": 107,
+          "shape": 7,
+          "label": "CLIP(可选)"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            84
+          ],
+          "slot_index": 0,
+          "label": "模型"
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "links": [
+            90,
+            91,
+            108
+          ],
+          "slot_index": 1,
+          "label": "CLIP"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy loraStackApply",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "color": "#006691"
+    },
+    {
+      "id": 83,
+      "type": "Reroute",
+      "pos": [
+        770,
+        870
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 108
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            79
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 84,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        100,
+        890
+      ],
+      "size": [
+        240,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 109,
+          "label": "CLIP"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            107
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "CLIP"
+        }
+      ],
+      "title": "CLIP设置停止层 -2",
+      "properties": {
+        "Node name for S&R": "CLIPSetLastLayer",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        -2
+      ],
+      "color": "#422342",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 85,
+      "type": "easy loraStack",
+      "pos": [
+        410,
+        1440
+      ],
+      "size": [
+        370,
+        202
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optional_lora_stack",
+          "type": "LORA_STACK",
+          "link": 110,
+          "shape": 7,
+          "label": "LoRA堆（可选）"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "links": [
+            93
+          ],
+          "slot_index": 0,
+          "label": "LoRA堆"
+        }
+      ],
+      "title": "简易Lora堆 风格LoRA",
+      "properties": {
+        "Node name for S&R": "easy loraStack",
+        "ttNbgOverride": {
+          "color": "#006691",
+          "groupcolor": "#3f789e"
+        }
+      },
+      "widgets_values": [
+        true,
+        "simple",
+        2,
+        ".Pony\\Techwear inspired aesthetic.safetensors",
+        0.6,
+        1,
+        1,
+        ".Pony\\NotArtistStyles\\NAS_Anime Summer Days 2 Style.safetensors",
+        0.8,
+        1,
+        1,
+        "None",
+        0.2,
+        1,
+        1,
+        "None",
+        0.6,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ],
+      "color": "#1f1f48",
+      "bgcolor": "rgba(24,24,27,.9)"
+    }
+  ],
+  "links": [
+    [
+      74,
+      61,
+      0,
+      57,
+      1,
+      "MODEL"
+    ],
+    [
+      75,
+      60,
+      0,
+      57,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      76,
+      69,
+      0,
+      57,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      77,
+      77,
+      0,
+      57,
+      4,
+      "LATENT"
+    ],
+    [
+      78,
+      81,
+      0,
+      57,
+      5,
+      "VAE"
+    ],
+    [
+      79,
+      83,
+      0,
+      57,
+      6,
+      "CLIP"
+    ],
+    [
+      80,
+      57,
+      0,
+      58,
+      0,
+      "PIPE_LINE"
+    ],
+    [
+      81,
+      70,
+      0,
+      58,
+      3,
+      "INT"
+    ],
+    [
+      82,
+      68,
+      0,
+      59,
+      0,
+      "*"
+    ],
+    [
+      83,
+      59,
+      0,
+      60,
+      0,
+      "*"
+    ],
+    [
+      84,
+      82,
+      0,
+      61,
+      0,
+      "MODEL"
+    ],
+    [
+      85,
+      71,
+      0,
+      62,
+      0,
+      "*"
+    ],
+    [
+      86,
+      71,
+      1,
+      62,
+      1,
+      "IMAGE"
+    ],
+    [
+      87,
+      64,
+      0,
+      67,
+      0,
+      "MODEL"
+    ],
+    [
+      88,
+      66,
+      0,
+      67,
+      1,
+      "MODEL"
+    ],
+    [
+      89,
+      65,
+      0,
+      67,
+      2,
+      "FLOAT"
+    ],
+    [
+      90,
+      82,
+      1,
+      68,
+      0,
+      "CLIP"
+    ],
+    [
+      91,
+      82,
+      1,
+      69,
+      0,
+      "CLIP"
+    ],
+    [
+      92,
+      58,
+      0,
+      71,
+      0,
+      "PIPE_LINE"
+    ],
+    [
+      93,
+      85,
+      0,
+      73,
+      0,
+      "LORA_STACK"
+    ],
+    [
+      94,
+      73,
+      0,
+      74,
+      0,
+      "LORA_STACK"
+    ],
+    [
+      95,
+      75,
+      0,
+      76,
+      0,
+      "*"
+    ],
+    [
+      96,
+      78,
+      0,
+      77,
+      0,
+      "LATENT"
+    ],
+    [
+      97,
+      80,
+      0,
+      77,
+      1,
+      "LATENT"
+    ],
+    [
+      98,
+      76,
+      0,
+      78,
+      0,
+      "*"
+    ],
+    [
+      99,
+      75,
+      0,
+      79,
+      0,
+      "LATENT"
+    ],
+    [
+      100,
+      81,
+      0,
+      80,
+      0,
+      "VAE"
+    ],
+    [
+      101,
+      79,
+      2,
+      80,
+      1,
+      "INT"
+    ],
+    [
+      102,
+      79,
+      1,
+      80,
+      2,
+      "INT"
+    ],
+    [
+      103,
+      63,
+      0,
+      80,
+      3,
+      "INT"
+    ],
+    [
+      104,
+      66,
+      2,
+      81,
+      0,
+      "*"
+    ],
+    [
+      105,
+      74,
+      0,
+      82,
+      0,
+      "LORA_STACK"
+    ],
+    [
+      106,
+      67,
+      0,
+      82,
+      1,
+      "MODEL"
+    ],
+    [
+      107,
+      84,
+      0,
+      82,
+      2,
+      "CLIP"
+    ],
+    [
+      108,
+      82,
+      1,
+      83,
+      0,
+      "*"
+    ],
+    [
+      109,
+      66,
+      1,
+      84,
+      0,
+      "CLIP"
+    ],
+    [
+      110,
+      72,
+      0,
+      85,
+      0,
+      "LORA_STACK"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6934334949441394,
+      "offset": [
+        638.5232655090902,
+        -655.200129822408
+      ]
+    },
+    "workspace_info": {
+      "id": "Nvuo4XzE8V0JAoU23XJP1"
+    },
+    "node_versions": {
+      "ComfyUI-Easy-Use": "d4fb74df19188fb63d962996bcf761e38a67ee71",
+      "Skimmed_CFG": "2712803a8b721665d43d5aeb4430e5ac0e931091",
+      "comfyui-lf": "unknown",
+      "rgthree-comfy": "5d771b8b56a343c24a26e8cea1f0c87c3d58102f",
+      "comfy-core": "0.3.14",
+      "PPF_Noise_ComfyUI": "bb864154a294154fd227388bbcaff33cc726fd96",
+      "ComfyUI-Impact-Pack": "1ae7cae2df8cca06027edfa3a24512671239d6c4",
+      "powernoisesuite": "581c164114dcb428759196617c8b18364c80ebeb",
+      "ComfyUI-Logic": "42d4f3df45fb7f0dd6e2201a14c07d4dd09f235d"
+    },
+    "groupNodes": {
+      "Pony CLIP batch encoder": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "String-🔬",
+            "pos": [
+              -150,
+              -290
+            ],
+            "size": [
+              310,
+              90
+            ],
+            "flags": {},
+            "order": 19,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "STRING",
+                "type": "STRING",
+                "links": [],
+                "localized_name": "字符串",
+                "label": "STRING",
+                "slot_index": 0
+              }
+            ],
+            "title": "String01",
+            "properties": {
+              "Node name for S&R": "String-🔬",
+              "ttNbgOverride": {
+                "color": "#006691",
+                "groupcolor": "#3f789e"
+              }
+            },
+            "widgets_values": [
+              ""
+            ],
+            "color": "#006691",
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "String-🔬",
+            "pos": [
+              -150,
+              -160
+            ],
+            "size": [
+              310,
+              90
+            ],
+            "flags": {},
+            "order": 20,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "STRING",
+                "type": "STRING",
+                "links": [],
+                "localized_name": "字符串",
+                "label": "STRING",
+                "slot_index": 0
+              }
+            ],
+            "title": "String02",
+            "properties": {
+              "Node name for S&R": "String-🔬",
+              "ttNbgOverride": {
+                "color": "#006691",
+                "groupcolor": "#3f789e"
+              }
+            },
+            "widgets_values": [
+              ""
+            ],
+            "color": "#006691",
+            "index": 1
+          },
+          {
+            "id": -1,
+            "type": "String-🔬",
+            "pos": [
+              -150,
+              -30
+            ],
+            "size": [
+              310,
+              90
+            ],
+            "flags": {},
+            "order": 21,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "STRING",
+                "type": "STRING",
+                "links": [],
+                "localized_name": "字符串",
+                "label": "STRING",
+                "slot_index": 0
+              }
+            ],
+            "title": "String03",
+            "properties": {
+              "Node name for S&R": "String-🔬",
+              "ttNbgOverride": {
+                "color": "#006691",
+                "groupcolor": "#3f789e"
+              }
+            },
+            "widgets_values": [
+              ""
+            ],
+            "color": "#006691",
+            "index": 2
+          },
+          {
+            "id": -1,
+            "type": "String-🔬",
+            "pos": [
+              -150,
+              100
+            ],
+            "size": [
+              310,
+              90
+            ],
+            "flags": {},
+            "order": 22,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "STRING",
+                "type": "STRING",
+                "links": [],
+                "localized_name": "字符串",
+                "label": "STRING",
+                "slot_index": 0
+              }
+            ],
+            "title": "String04",
+            "properties": {
+              "Node name for S&R": "String-🔬",
+              "ttNbgOverride": {
+                "color": "#006691",
+                "groupcolor": "#3f789e"
+              }
+            },
+            "widgets_values": [
+              ""
+            ],
+            "color": "#006691",
+            "index": 3
+          },
+          {
+            "id": -1,
+            "type": "Text Concatenate",
+            "pos": [
+              190,
+              -290
+            ],
+            "size": [
+              210,
+              142
+            ],
+            "flags": {},
+            "order": 26,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "text_a",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "text_a"
+                },
+                "shape": 7
+              },
+              {
+                "name": "text_b",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "text_b"
+                },
+                "shape": 7
+              },
+              {
+                "name": "text_c",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "text_c"
+                },
+                "shape": 7
+              },
+              {
+                "name": "text_d",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "text_d"
+                },
+                "shape": 7
+              }
+            ],
+            "outputs": [
+              {
+                "name": "STRING",
+                "type": "STRING",
+                "links": [],
+                "localized_name": "字符串",
+                "label": "字符串",
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "Text Concatenate"
+            },
+            "widgets_values": [
+              ", ",
+              "true",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "index": 4
+          },
+          {
+            "id": -1,
+            "type": "BNK_CLIPTextEncodeAdvanced",
+            "pos": [
+              420,
+              -310
+            ],
+            "size": [
+              210,
+              102
+            ],
+            "flags": {},
+            "order": 30,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "clip",
+                "type": "CLIP",
+                "link": null,
+                "label": "CLIP",
+                "localized_name": "clip"
+              },
+              {
+                "name": "text",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "text"
+                },
+                "label": "文本"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 0,
+                "label": "条件",
+                "localized_name": "条件"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "BNK_CLIPTextEncodeAdvanced",
+              "ttNbgOverride": {
+                "color": "#006691",
+                "groupcolor": "#3f789e"
+              }
+            },
+            "widgets_values": [
+              "",
+              "none",
+              "comfy"
+            ],
+            "color": "#006691",
+            "index": 5
+          }
+        ],
+        "links": [
+          [
+            0,
+            0,
+            4,
+            0,
+            147,
+            "STRING"
+          ],
+          [
+            1,
+            0,
+            4,
+            1,
+            148,
+            "STRING"
+          ],
+          [
+            2,
+            0,
+            4,
+            2,
+            149,
+            "STRING"
+          ],
+          [
+            3,
+            0,
+            4,
+            3,
+            152,
+            "STRING"
+          ],
+          [
+            4,
+            0,
+            5,
+            1,
+            150,
+            "STRING"
+          ]
+        ],
+        "external": [],
+        "config": {
+          "0": {
+            "input": {
+              "value": {
+                "name": "Pony Prompt Token"
+              }
+            }
+          },
+          "1": {
+            "input": {
+              "value": {
+                "name": "Prompt"
+              }
+            }
+          },
+          "2": {
+            "input": {
+              "value": {
+                "name": "Trigger Prompt"
+              }
+            }
+          },
+          "3": {
+            "input": {
+              "value": {
+                "name": "Embedding Prompt"
+              }
+            }
+          },
+          "4": {
+            "input": {
+              "text_d": {
+                "visible": false
+              },
+              "text_c": {
+                "visible": false
+              },
+              "text_b": {
+                "visible": false
+              },
+              "text_a": {
+                "visible": false
+              },
+              "clean_whitespace": {
+                "visible": false
+              },
+              "delimiter": {
+                "visible": false
+              }
+            }
+          },
+          "5": {
+            "input": {
+              "text": {
+                "visible": false
+              },
+              "token_normalization": {
+                "visible": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
